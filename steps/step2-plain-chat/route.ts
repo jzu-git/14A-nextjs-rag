@@ -5,7 +5,7 @@
  * Test with `npm run dev` and ask anything; tokens should stream back.
  * Once streaming works, move to Step 4.
  */
-import { openai } from '@ai-sdk/openai';
+import { openai } from '@/lib/openai';
 import { streamText } from 'ai';
 
 export async function POST(req: Request) {

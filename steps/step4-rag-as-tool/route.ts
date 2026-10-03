@@ -7,7 +7,7 @@
  * To run this snapshot: copy it to app/api/chat/route.ts (the page.tsx from
  * Step 2 still works — sources won't render until you also adopt Step 5's page).
  */
-import { openai } from '@ai-sdk/openai';
+import { openai } from '@/lib/openai';
 import { streamText, tool, embed } from 'ai';
 import { Index } from '@upstash/vector';
 import { z } from 'zod';

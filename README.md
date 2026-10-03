@@ -1,3 +1,12 @@
+# Week 14A · Next.js RAG Graded Assignment
+
+For this assignment I created 2 GenAI reviewer (pdf file): CT-GenAI_Study Guide.pdf and GenAI_Testing_Reviewer_CT-GenAI_v1.1.pdf using Claude. These documents are based on ISTQB Gen AI syllabus.
+This is an independent study aid, not an official ISTQB® product. Refer to the official syllabus for authoritative material. ISTQB® reserves all rights to the syllabus content.
+https://istqb.org/?sdm_process_download=1&download_id=6295
+
+
+
+
 # Week 14A · Next.js RAG starter
 
 A streaming chat app on top of your knowledge base, built with [Next.js 15](https://nextjs.org/), the [Vercel AI SDK](https://sdk.vercel.ai/), and [Upstash Vector](https://upstash.com/docs/vector). This is the working solution for Section 4 of Week 14A.
@@ -43,14 +52,14 @@ npm install
 
 # 2. environment
 cp .env.example .env.local
-# edit .env.local and paste your real OPENAI_API_KEY,
-# UPSTASH_VECTOR_REST_URL, UPSTASH_VECTOR_REST_TOKEN
+# edit .env.local and paste your Vocareum OPENAI_API_KEY,
+# OPENAI_API_BASE_URL, UPSTASH_VECTOR_REST_URL, UPSTASH_VECTOR_REST_TOKEN
 
-# 3. seed the vector index (one-time, or whenever data/sample.pdf changes)
+# 3. place one or more PDF files in data/, then seed the vector index
 npm run seed
 ```
 
-The seed script reads `data/sample.pdf`, chunks it, embeds each chunk with `text-embedding-3-small`, and upserts to your Upstash Vector index. Re-running it overwrites the same ids, so it's idempotent.
+The seed script reads every `*.pdf` file in `data/`, chunks and embeds each page with `text-embedding-3-small`, and indexes the results in Upstash Vector. Re-run it whenever you add, replace, rename, or remove a PDF; each run replaces the app's previous seeded chunks. Source results include the PDF filename and page number.
 
 ## Run the final app
 
@@ -84,8 +93,8 @@ After Step 5, the snapshots and the final `app/page.tsx` + `app/api/chat/route.t
 
 ## Use your own corpus
 
-1. Replace `data/sample.pdf` with your own PDF.
-2. Re-run `npm run seed`.
+1. Add, replace, or remove PDF files in `data/` (multiple PDFs are supported).
+2. Re-run `npm run seed` to rebuild the indexed corpus.
 3. Restart `npm run dev`.
 
 For multi-PDF, multi-version, or permission-aware retrieval see Week 14B Section 4.
@@ -97,6 +106,7 @@ npm i -g vercel  # if you don't have it
 vercel           # first run: log in, link the project
 vercel link
 vercel env add OPENAI_API_KEY
+vercel env add OPENAI_API_BASE_URL
 vercel env add UPSTASH_VECTOR_REST_URL
 vercel env add UPSTASH_VECTOR_REST_TOKEN
 vercel --prod
