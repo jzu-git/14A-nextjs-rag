@@ -4,6 +4,8 @@ For this assignment I created 2 GenAI reviewer (pdf file): CT-GenAI_Study Guide.
 This is an independent study aid, not an official ISTQB® product. Refer to the official syllabus for authoritative material. ISTQB® reserves all rights to the syllabus content.
 https://istqb.org/?sdm_process_download=1&download_id=6295
 
+This is an AI powered study partner web application that can help those who are studying for the certification or simply learning what Generative AI is and how it can help with software testing. 
+
 
 
 
